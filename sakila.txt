@@ -1,0 +1,47 @@
+4 .. What query would you run to get all the customers in store_id = 1 and inside these cities (1, 42, 312 and 459)? Your query should return customer first name, last name, email, and address.
+
+
+use sakila;
+SELECT  actor.first_name, actor.actor_id, film.title , film.release_year
+FROM actor
+JOIN film_actor ON actor.actor_id=film_actor.actor_id
+JOIN film on film_actor.film_id = film.film_id 
+Where actor.actor_id = 5;
+
+
+
+
+
+
+5 .. What query would you run to get all the films with a "rating = G" and "special feature = behind the scenes", joined by actor_id = 15? Your query should return the film title, description, release year, rating, and special feature. Hint: You may use LIKE function in getting the 'behind the scenes' part.
+
+use sakila;
+SELECT  actor.first_name, actor.last_name, actor.actor_id, film.title , film.release_year , film.rating
+FROM actor
+JOIN film_actor ON actor.actor_id=film_actor.actor_id
+JOIN film on film_actor.film_id = film.film_id 
+Where actor.actor_id =  15 
+and  film.rating like "G%";
+
+
+6 .. What query would you run to get all the actors that joined in the film_id = 369? Your query should return the film_id, title, actor_id, and actor_name.
+
+
+
+
+
+7.. 7. What query would you run to get all drama films with a rental rate of 2.99? Your query should return film title, description, release year, rating, special features, and genre (category).
+
+
+use sakila;
+select film.film_id,film.title, film.description, film.release_year, film.rating, film.special_features,  category.name
+from film, category
+where name like "drama%";
+
+8.
+What query would you run to get all the action films which are joined by SANDRA KILMER? Your query should return film title, description, release year, rating, special features, genre (category), and actor's first name and last name.
+
+use sakila;
+select film.film_id,film.title, film.description, film.release_year, film.rating, film.special_features,  category.name , actor.first_name , actor.last_name
+from film, category , actor
+where actor.first_name like "SANDRA%" and actor.last_name like "kilmer%" and category.name like "action%"
